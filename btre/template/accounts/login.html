@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load socialaccount %}
+{% providers_media_js %}
+{% block title %} Account Login  {% endblock%}
+{% block content %}
+
+  <section id="login" class="bg-light py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card">
+            <div class="card-header bg-primary text-white">
+              <h4>
+                <i class="fas fa-sign-in-alt"></i> Login</h4>
+            </div>
+            <div class="card-body">
+                <!--Alert-->
+                {% include 'partials/_alerts.html' %}
+               <form action="{% url 'login'  %}" method='POST'>
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="username">Username</label>
+                  <input type="text" name="username" class="form-control">
+                </div>
+
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" name="password" class="form-control" >
+                </div>
+
+                <input type="submit" value="Login" class="btn btn-secondary btn-block">
+
+
+              </form>
+
+                <button class="btn btn-secondary btn-block"><a href="{% provider_login_url "google"   %}"> Signin with Google</a></button>
+<!--                 <button class="btn btn-secondary btn-block"><a href="{% provider_login_url "facebook" method="oauth2" %}">Facebook</a></button>-->
+
+
+<!--                <div class="google-btn">-->
+<!--                  <div class="google-icon-wrapper">-->
+<!--                    <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>-->
+<!--                  </div>-->
+<!--                  <p class="btn-text"><b>Sign in with google</b></p>-->
+<!--                </div>-->
+
+
+<!--                <a href="#" class="google signin_btn"><i class="fa fa-google fa-fw">-->
+<!--                  </i> Login with Google-->
+<!--                </a>-->
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<!--<style type="text/css">-->
+<!--.signin_btn {-->
+<!--  width: 100%;-->
+<!--  padding: 12px;-->
+<!--  border: none;-->
+<!--  border-radius: 4px;-->
+<!--  margin: 5px 0;-->
+<!--  opacity: 0.85;-->
+<!--  display: inline-block;-->
+<!--  font-size: 17px;-->
+<!--  line-height: 20px;-->
+<!--  text-decoration: none; /* remove underline from anchors */-->
+<!--}-->
+
+<!--.google {-->
+<!--  background-color: #dd4b39;-->
+<!--  color: white;-->
+<!--}-->
+<!--</style>-->
+
+
+{% endblock %}
